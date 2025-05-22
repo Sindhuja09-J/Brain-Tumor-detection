@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Detection Results</h1>
+    <h2>Detected Image</h2>
+    <img src="{{ detected_image_path }}" alt="Detected Image" width="600"><br><br> <!-- Show the image from static -->
+
+    {% if predictions %}
+        <ul>
+            {% for prediction in predictions %}
+                <li>
+                    <strong>Class:</strong> {{ prediction['class'] }} <br>
+                    <strong>Confidence:</strong> {{ prediction['confidence'] }} <br>
+                    <strong>Bounding Box:</strong> {{ prediction['box'] }} <br>
+                    <strong>Tumor Size:</strong> {{ prediction['size'] }} pixels <br> <!-- Display the size -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No detections were made.</p>
+    {% endif %}
+</body>
+</html>
